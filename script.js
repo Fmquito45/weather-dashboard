@@ -49,5 +49,9 @@ var humidEls = [
 
 var apiKey = f1857ee728cff532cf0b670e7ef214c4
 
+searchButtonEl.addEventListener("click", function() {
+    var cityInput = searchInputEl.value;
+})
+
 
 
