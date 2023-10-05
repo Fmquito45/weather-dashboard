@@ -47,10 +47,12 @@ var cityEl = document.getElementById("city");
 //     document.getElementById("humid5"),
 // ]
 
-// var apiKey = f1857ee728cff532cf0b670e7ef214c4
+var apiKey = "f1857ee728cff532cf0b670e7ef214c4";
 
 function getLocation(input) {
-    console.log("City searched" + input)
+    console.log("City searched", input);
+    var cityUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + input + "&appid=" + apiKey;
+    console.log(cityUrl);
 }
 
 searchButtonEl.addEventListener("click", function() {
