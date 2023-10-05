@@ -53,6 +53,14 @@ function getLocation(input) {
     console.log("City searched", input);
     var cityUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + input + "&appid=" + apiKey;
     console.log(cityUrl);
+    fetch(cityUrl).then(function (data) {
+        return data.json();
+    }).then(function (data) {
+        console.log(data);
+        var lat = data[0].lat;
+        var lon = data[0].lon;
+        getWeather(lat, lon)
+    });
 }
 
 searchButtonEl.addEventListener("click", function() {
