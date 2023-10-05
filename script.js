@@ -49,6 +49,7 @@ var cityEl = document.getElementById("city");
 
 var apiKey = "f1857ee728cff532cf0b670e7ef214c4";
 
+// function to fetch data for lat and lon on city searched
 function getLocation(input) {
     console.log("City searched", input);
     var cityUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + input + "&appid=" + apiKey;
@@ -61,6 +62,16 @@ function getLocation(input) {
         var lon = data[0].lon;
         getWeather(lat, lon)
     });
+}
+
+function getWeather(lat, lon) {
+    var weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&appid="+apiKey+"&units=imperial"
+    console.log(weatherUrl);
+    fetch(weatherUrl).then(function(data) {
+        return data.json();
+    }).then(function(data) {
+        console.log(data);
+    })
 }
 
 searchButtonEl.addEventListener("click", function() {
