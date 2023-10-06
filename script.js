@@ -1,5 +1,6 @@
 var searchInputEl = document.getElementById("search-input");
 var searchButtonEl = document.getElementById("search-button");
+
 var cityEl = document.getElementById("city");
 
 // var dateEls = [
@@ -82,13 +83,22 @@ function forecastDisplay(data) {
     console.log(indexs.length);
     var dates = [];
     var temps = [];
+    var winds = [];
+    var humids = [];
+    
     for (let i=0; i<indexs.length; i++){
-        dates[i]= data.list[indexs[i]].dt_txt;
-        console.log(dates[i]);
+        dates[i] = data.list[indexs[i]].dt_txt;
+        console.log("dates", dates[i]);
         temps[i] = data.list[indexs[i]].main.temp;
-        console.log(temps[i]);
-        
-    } 
+        console.log("temps", temps[i]);
+        winds[i] = data.list[indexs[i]].wind.speed;
+        console.log("winds", winds[i]);
+        humids[i] = data.list[indexs[i]].main.humidity;
+        console.log("humids", humids[i]);
+    };
+
+    
+
 
 }
 
