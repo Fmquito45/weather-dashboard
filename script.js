@@ -63,7 +63,7 @@ function getLocation(input) {
         getWeather(lat, lon)
     });
 }
-
+// function to fetch data for forecast 
 function getWeather(lat, lon) {
     var weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&appid="+apiKey+"&units=imperial"
     console.log(weatherUrl);
@@ -71,7 +71,25 @@ function getWeather(lat, lon) {
         return data.json();
     }).then(function(data) {
         console.log(data);
+        forecastDisplay(data);
     })
+}
+
+function forecastDisplay(data) {
+    var city = data.city.name;
+    console.log(city);
+    var indexs = [0,8,16,24,32,39];
+    console.log(indexs.length);
+    var dates = [];
+    var temps = [];
+    for (let i=0; i<indexs.length; i++){
+        dates[i]= data.list[indexs[i]].dt_txt;
+        console.log(dates[i]);
+        temps[i] = data.list[indexs[i]].main.temp;
+        console.log(temps[i]);
+        
+    } 
+
 }
 
 searchButtonEl.addEventListener("click", function() {
