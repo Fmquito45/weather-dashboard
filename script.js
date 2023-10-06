@@ -97,7 +97,7 @@ function forecastDisplay(data) {
         console.log("humids", humids[i]);
     };
 
-    
+    cityEl.textContent = city
 
 
 }
