@@ -12,41 +12,41 @@ var dateEls = [
     document.getElementById("date5"),
 ]
 
-// var iconEls = [
-//     document.getElementById("icon"),
-//     document.getElementById("icon1"),
-//     document.getElementById("icon2"),
-//     document.getElementById("icon3"),
-//     document.getElementById("icon4"),
-//     document.getElementById("icon5")
-// ]
+var iconEls = [
+    document.getElementById("icon"),
+    document.getElementById("icon1"),
+    document.getElementById("icon2"),
+    document.getElementById("icon3"),
+    document.getElementById("icon4"),
+    document.getElementById("icon5")
+]
 
-// var tempEls = [
-//     document.getElementById("temp"),
-//     document.getElementById("temp1"),
-//     document.getElementById("temp2"),
-//     document.getElementById("temp3"),
-//     document.getElementById("temp4"),
-//     document.getElementById("temp5")
-// ]
+var tempEls = [
+    document.getElementById("temp"),
+    document.getElementById("temp1"),
+    document.getElementById("temp2"),
+    document.getElementById("temp3"),
+    document.getElementById("temp4"),
+    document.getElementById("temp5")
+]
 
-// var windEls = [
-//     document.getElementById("wind"),
-//     document.getElementById("wind1"),
-//     document.getElementById("wind2"),
-//     document.getElementById("wind3"),
-//     document.getElementById("wind4"),
-//     document.getElementById("wind5"),
-// ]
+var windEls = [
+    document.getElementById("wind"),
+    document.getElementById("wind1"),
+    document.getElementById("wind2"),
+    document.getElementById("wind3"),
+    document.getElementById("wind4"),
+    document.getElementById("wind5"),
+]
 
-// var humidEls = [
-//     document.getElementById("humid"),
-//     document.getElementById("humid1"),
-//     document.getElementById("humid2"),
-//     document.getElementById("humid3"),
-//     document.getElementById("humid4"),
-//     document.getElementById("humid5"),
-// ]
+var humidEls = [
+    document.getElementById("humid"),
+    document.getElementById("humid1"),
+    document.getElementById("humid2"),
+    document.getElementById("humid3"),
+    document.getElementById("humid4"),
+    document.getElementById("humid5"),
+]
 
 var apiKey = "f1857ee728cff532cf0b670e7ef214c4";
 
@@ -101,6 +101,12 @@ function forecastDisplay(data) {
 
     for (let i=0; i<indexs.length; i++) {
         dateEls[i].textContent = dates[i];
+        iconEls[i].setAttribute("src", `https://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png`)
+        tempEls[i].textContent = "Temperature:"+temps[i]+"°F";
+        windEls[i].textContent = "Wind Speed:"+winds[i]+"mph";
+        humidEls[i].textContent = "Humidity:"+humids[i]+"%";
+
+
     }
 
 
