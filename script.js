@@ -47,18 +47,18 @@ var humidEls = [
     document.getElementById("humid4"),
     document.getElementById("humid5"),
 ]
-
+// apiKey generated to access data
 var apiKey = "f1857ee728cff532cf0b670e7ef214c4";
 
 // function to fetch data for lat and lon on city searched
 function getLocation(input) {
-    console.log("City searched", input);
+    // console.log("City searched", input);
     var cityUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + input + "&appid=" + apiKey;
-    console.log(cityUrl);
+    // console.log(cityUrl);
     fetch(cityUrl).then(function (data) {
         return data.json();
     }).then(function (data) {
-        console.log(data);
+        // console.log(data);
         var lat = data[0].lat;
         var lon = data[0].lon;
         getWeather(lat, lon)
@@ -67,49 +67,44 @@ function getLocation(input) {
 // function to fetch data for forecast 
 function getWeather(lat, lon) {
     var weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&appid="+apiKey+"&units=imperial"
-    console.log(weatherUrl);
+    // console.log(weatherUrl);
     fetch(weatherUrl).then(function(data) {
         return data.json();
     }).then(function(data) {
-        console.log(data);
+        // console.log(data);
         forecastDisplay(data);
     })
 }
-
+// function to collect data and display in html page with new dom element values
 function forecastDisplay(data) {
     var city = data.city.name;
-    console.log(city);
+    // console.log(city);
     var indexs = [0,8,16,24,32,39];
-    console.log(indexs.length);
+    // console.log(indexs.length);
     var dates = [];
     var temps = [];
     var winds = [];
     var humids = [];
-    
+    // use foor loop to collect required data for each variable
     for (let i=0; i<indexs.length; i++) {
         dates[i] = data.list[indexs[i]].dt_txt.split(" ")[0];
-        console.log("dates", dates[i]);
+        // console.log("dates", dates[i]);
         temps[i] = data.list[indexs[i]].main.temp;
-        console.log("temps", temps[i]);
+        // console.log("temps", temps[i]);
         winds[i] = data.list[indexs[i]].wind.speed;
-        console.log("winds", winds[i]);
+        // console.log("winds", winds[i]);
         humids[i] = data.list[indexs[i]].main.humidity;
-        console.log("humids", humids[i]);
+        // console.log("humids", humids[i]);
     };
-
     cityEl.textContent = city
-
+    // sets values to dom elements with collected data
     for (let i=0; i<indexs.length; i++) {
         dateEls[i].textContent = dates[i];
         iconEls[i].setAttribute("src", `https://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png`)
         tempEls[i].textContent = "Temperature:"+temps[i]+"°F";
         windEls[i].textContent = "Wind Speed:"+winds[i]+"mph";
         humidEls[i].textContent = "Humidity:"+humids[i]+"%";
-
-
     }
-
-
 }
 
 searchButtonEl.addEventListener("click", function() {
