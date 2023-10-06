@@ -3,14 +3,14 @@ var searchButtonEl = document.getElementById("search-button");
 
 var cityEl = document.getElementById("city");
 
-// var dateEls = [
-//     document.getElementById("date"),
-//     document.getElementById("date1"),
-//     document.getElementById("date2"),
-//     document.getElementById("date3"),
-//     document.getElementById("date4"),
-//     document.getElementById("date5"),
-// ]
+var dateEls = [
+    document.getElementById("date"),
+    document.getElementById("date1"),
+    document.getElementById("date2"),
+    document.getElementById("date3"),
+    document.getElementById("date4"),
+    document.getElementById("date5"),
+]
 
 // var iconEls = [
 //     document.getElementById("icon"),
@@ -86,8 +86,8 @@ function forecastDisplay(data) {
     var winds = [];
     var humids = [];
     
-    for (let i=0; i<indexs.length; i++){
-        dates[i] = data.list[indexs[i]].dt_txt;
+    for (let i=0; i<indexs.length; i++) {
+        dates[i] = data.list[indexs[i]].dt_txt.split(" ")[0];
         console.log("dates", dates[i]);
         temps[i] = data.list[indexs[i]].main.temp;
         console.log("temps", temps[i]);
@@ -98,6 +98,10 @@ function forecastDisplay(data) {
     };
 
     cityEl.textContent = city
+
+    for (let i=0; i<indexs.length; i++) {
+        dateEls[i].textContent = dates[i];
+    }
 
 
 }
