@@ -101,9 +101,9 @@ function forecastDisplay(data) {
     for (let i=0; i<indexs.length; i++) {
         dateEls[i].textContent = dates[i];
         iconEls[i].setAttribute("src", `https://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png`)
-        tempEls[i].textContent = "Temperature:"+temps[i]+"°F";
-        windEls[i].textContent = "Wind Speed:"+winds[i]+"mph";
-        humidEls[i].textContent = "Humidity:"+humids[i]+"%";
+        tempEls[i].textContent = "Temperature: "+temps[i]+"°F";
+        windEls[i].textContent = "Wind Speed: "+winds[i]+"mph";
+        humidEls[i].textContent = "Humidity: "+humids[i]+"%";
     }
 }
 
